@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>My Songs - DKWeb</title>
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #e6e6e6;
+      margin: 0;
+      padding: 1rem;
+      text-align: center;
+    }
+
+    .home-btn {
+      position: fixed;
+      top: 1rem;
+      left: 1rem;
+      background: #1a1a2e;
+      color: white;
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+      z-index: 1000;
+    }
+
+    h1 {
+      color: #1a1a2e;
+      margin-top: 2rem;
+    }
+
+    .video-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    .video {
+      width: 320px;
+      background: white;
+      padding: 1rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    iframe {
+      width: 100%;
+      height: 180px;
+      border-radius: 8px;
+    }
+
+    .title {
+      margin-top: 0.5rem;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <a class="home-btn" href="index.html">🏠 Home</a>
+
+  <h1>🎵 My Songs</h1>
+  <p>Listen to original compositions by DK</p>
+
+  <div class="video-container">
+
+    <div class="video">
+      <iframe src="https://www.youtube.com/embed/XLgJ4EYof3M" frameborder="0" allowfullscreen></iframe>
+      <div class="title">Pahla Pyar with Sneh Upadhyay</div>
+    </div>
+
+    <div class="video">
+      <iframe src="https://www.youtube.com/embed/153sNf2Z3Qc" frameborder="0" allowfullscreen></iframe>
+      <div class="title">Raghuwar Ram Aa Gaye</div>
+    </div>
+
+    <div class="video">
+      <iframe src="https://www.youtube.com/embed/rgFtlUeXRqI" frameborder="0" allowfullscreen></iframe>
+      <div class="title">Pyar Nahi Hai Khel Dear</div>
+    </div>
+
+    <div class="video">
+      <iframe src="https://www.youtube.com/embed/5jXH_7V3IUU" frameborder="0" allowfullscreen></iframe>
+      <div class="title">Koi Pukare Shankar</div>
+    </div>
+
+    <div class="video">
+      <iframe src="https://www.youtube.com/embed/NEjGJ8A2wMI" frameborder="0" allowfullscreen></iframe>
+      <div class="title">Jaatikaar</div>
+    </div>
+
+    <div class="video">
+      <iframe src="https://www.youtube.com/embed/gM7fxWUELGs" frameborder="0" allowfullscreen></iframe>
+      <div class="title">Bhojpuri Bhajan</div>
+    </div>
+
+  </div>
+</body>
+</html>
