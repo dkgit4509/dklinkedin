@@ -65,32 +65,25 @@
 
     .tabs {
       display: flex;
-      flex-wrap: nowrap;
-      overflow-x: auto;
-      justify-content: flex-start;
+      flex-wrap: wrap;
+      justify-content: center;
       gap: 1.2rem;
       padding: 1rem;
-      animation: scrollTabs 20s linear infinite;
-    }
-
-    @keyframes scrollTabs {
-      0% { transform: translateX(0); }
-      100% { transform: translateX(-50%); }
     }
 
     .tab {
       text-decoration: none;
       color: black;
       font-weight: bold;
-      padding: 1rem;
+      padding: 1.5rem;
       border: 3px solid;
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
-      width: 120px;
-      height: 120px;
-      font-size: 0.95rem;
+      width: 140px;
+      height: 140px;
+      font-size: 1.1rem;
       text-align: center;
       background-color: white;
       transition: transform 0.3s;
@@ -99,15 +92,15 @@
     }
 
     .tab:hover {
-      transform: scale(1.1);
+      transform: scale(1.15);
     }
 
     .dropdown {
       display: none;
       position: absolute;
-      top: 130px;
+      top: 150px;
       left: 0;
-      width: 160px;
+      width: 180px;
       background: white;
       border-radius: 8px;
       box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
@@ -123,7 +116,7 @@
       padding: 0.75rem;
       text-decoration: none;
       color: #1a1a2e;
-      font-size: 0.9rem;
+      font-size: 0.95rem;
       border-bottom: 1px solid #ddd;
     }
 
