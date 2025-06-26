@@ -102,17 +102,19 @@
       top: 130px;
       left: 50%;
       transform: translateX(-50%);
-      display: flex;
-      flex-direction: column;
       background: white;
-      border-radius: 8px;
-      padding: 0.5rem;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      border-radius: 12px;
+      padding: 0.5rem 1rem;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
       z-index: 10;
+      flex-wrap: nowrap;
+      justify-content: center;
+      gap: 0.5rem;
     }
 
     .tab:hover .dropdown {
       display: flex;
+      flex-direction: row;
     }
 
     .dropdown a {
@@ -123,7 +125,6 @@
       padding: 0.5rem 1rem;
       border-radius: 12px;
       white-space: nowrap;
-      margin: 0.2rem 0;
     }
 
     .yellow-outline { border-color: #fbc02d; }
@@ -159,13 +160,19 @@
     .instagram { background-color: #E1306C; }
     .email { background-color: #1976d2; }
 
-    /* Responsive Fix */
     @media (max-width: 768px) {
+      .tabs {
+        flex-direction: column;
+        align-items: center;
+      }
+      .tab {
+        width: 100px;
+        height: 100px;
+        font-size: 0.8rem;
+      }
       .dropdown {
-        top: 140px;
-        left: 0;
-        right: 0;
-        transform: none;
+        top: 110px;
+        flex-direction: column;
       }
     }
   </style>
@@ -174,7 +181,7 @@
 
   <div class="banner">
     <div class="scroll-text">
-      🚧 👷‍♂️ DKWeb is under creative construction. Please stand by... Did you know? *Sitaare Zameen Par* is the Hindi remake of the 2018 Spanish film *Campeones*! 🚧
+      🚧 👷‍♂️ DKWeb is under creative construction. Please stand by...Do you know ? Sitaare Zameen Par is  Hindi remake of the 2018 Spanish film, Campeones 🚧
     </div>
   </div>
 
@@ -184,7 +191,6 @@
   </header>
 
   <div class="tabs">
-    <!-- MOVIES + TV -->
     <div class="tab yellow-outline">
       MOVIES & TV 📺
       <div class="dropdown">
@@ -193,7 +199,6 @@
       </div>
     </div>
 
-    <!-- YT Picks -->
     <div class="tab red-outline">
       YTube Channel Picks
       <div class="dropdown">
