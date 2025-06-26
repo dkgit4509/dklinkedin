@@ -65,10 +65,17 @@
 
     .tabs {
       display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
+      flex-wrap: nowrap;
+      overflow-x: auto;
+      justify-content: flex-start;
       gap: 1.2rem;
-      margin: 2rem;
+      padding: 1rem;
+      animation: scrollTabs 20s linear infinite;
+    }
+
+    @keyframes scrollTabs {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
     }
 
     .tab {
@@ -86,12 +93,42 @@
       font-size: 0.95rem;
       text-align: center;
       background-color: white;
-      transition: transform 0.2s;
+      transition: transform 0.3s;
       font-family: 'Ubuntu', cursive;
+      position: relative;
     }
 
     .tab:hover {
-      transform: scale(1.05);
+      transform: scale(1.1);
+    }
+
+    .dropdown {
+      display: none;
+      position: absolute;
+      top: 130px;
+      left: 0;
+      width: 160px;
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      z-index: 10;
+    }
+
+    .tab:hover .dropdown {
+      display: block;
+    }
+
+    .dropdown a {
+      display: block;
+      padding: 0.75rem;
+      text-decoration: none;
+      color: #1a1a2e;
+      font-size: 0.9rem;
+      border-bottom: 1px solid #ddd;
+    }
+
+    .dropdown a:last-child {
+      border-bottom: none;
     }
 
     .yellow-outline { border-color: #fbc02d; }
@@ -126,31 +163,13 @@
     .whatsapp { background-color: #25D366; }
     .instagram { background-color: #E1306C; }
     .email { background-color: #1976d2; }
-
-    .whatsapp-float {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      background-color: #25D366;
-      color: white;
-      border-radius: 50%;
-      width: 45px;
-      height: 45px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-decoration: none;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-      font-size: 24px;
-      z-index: 999;
-    }
   </style>
 </head>
 <body>
 
   <div class="banner">
     <div class="scroll-text">
-      🚧 👷‍♂️ DKWeb is under creative construction. Please stand by...Do you know ? Sitaare Zameen Par is  Hindi remake of the 2018 Spanish film, Campeones 🚧
+      🚧 👷‍♂️ DKWeb is under creative construction. Please stand by...Do you know ? Sitaare Zameen Par is a Hindi remake of the 2018 Spanish film, Campeones 🚧
     </div>
   </div>
 
@@ -160,8 +179,27 @@
   </header>
 
   <div class="tabs">
-    <a href="movies.html" class="tab yellow-outline">MOVIES</a>
-    <a href="tvseries.html" class="tab blue-outline">TV SERIES</a>
+    <!-- Movies & TV Dropdown -->
+    <div class="tab yellow-outline">
+      MOVIES & TV 📺
+      <div class="dropdown">
+        <a href="movies.html">🎬 Movies</a>
+        <a href="tvseries.html">📺 TV Series</a>
+      </div>
+    </div>
+
+    <!-- YT Channel Picks Dropdown -->
+    <div class="tab red-outline">
+      YTube Channel Picks
+      <div class="dropdown">
+        <a href="#">💻 Tech</a>
+        <a href="#">🔬 Science & Space</a>
+        <a href="#">💰 Finance</a>
+        <a href="#">🗣 Communication</a>
+        <a href="#">🎓 Career & Learning</a>
+      </div>
+    </div>
+
     <a href="songs.html" class="tab red-outline">MY SONGS</a>
     <a href="tech.html" class="tab green-outline">TECH CORNER</a>
     <a href="ai.html" class="tab purple-outline">AI</a>
@@ -191,8 +229,6 @@
       <a href="mailto:dileepkryadav09@gmail.com" class="email">Email</a>
     </div>
   </section>
-
-  <a href="https://wa.me/918175996960" class="whatsapp-float" target="_blank" title="Chat on WhatsApp">💬</a>
 
 </body>
 </html>
