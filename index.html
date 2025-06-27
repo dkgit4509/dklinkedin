@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -114,7 +115,7 @@
 
     .tab:hover .dropdown {
       display: flex;
-      flex-direction: row;
+      flex-direction: column;
     }
 
     .dropdown a {
@@ -212,12 +213,18 @@
       </div>
     </div>
 
-    <a href="songs.html" class="tab red-outline">MY SONGS</a>
     <a href="tech.html" class="tab green-outline">TECH CORNER</a>
     <a href="ai.html" class="tab purple-outline">AI</a>
     <a href="blog.html" class="tab yellow-outline">BLOG</a>
-    <a href="poetry.html" class="tab teal-outline">POETRIES & SCRIPTS</a>
-    <a href="#contact" class="tab yellow-outline">CONTACT</a>
+
+    <div class="tab yellow-outline">
+      MY PORTFOLIO
+      <div class="dropdown">
+        <a href="songs.html">🎵 My Songs</a>
+        <a href="poetry.html">📝 Poetries & Scripts</a>
+        <a href="#contact">📬 Contact</a>
+      </div>
+    </div>
   </div>
 
   <section id="about">
