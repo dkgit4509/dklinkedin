@@ -274,6 +274,59 @@
       vertical-align: middle;
     }
 
+    .landing-section {
+      background: #fff;
+      border-radius: 18px;
+      box-shadow: var(--shadow);
+      padding: 2.5rem 2rem 2rem 2rem;
+      margin: 2.5rem auto 2.5rem auto;
+      max-width: 900px;
+      text-align: center;
+    }
+    .landing-section h2 {
+      font-size: 2.1rem;
+      color: var(--primary);
+      margin-bottom: 1.3rem;
+    }
+    .landing-section p {
+      color: #444;
+      font-size: 1.15rem;
+      margin-bottom: 1.5rem;
+    }
+    .landing-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      justify-content: center;
+      margin-top: 2rem;
+    }
+    .landing-link-btn {
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+      background: var(--accent);
+      color: #fff;
+      padding: 1.1rem 2.6rem;
+      border-radius: 12px;
+      font-weight: 700;
+      font-size: 1.18rem;
+      text-decoration: none;
+      box-shadow: var(--shadow);
+      transition: background 0.2s, transform 0.2s;
+    }
+    .landing-link-btn:hover {
+      background: #293462;
+      color: #fff;
+      transform: translateY(-2px) scale(1.03);
+    }
+    .landing-link-btn img {
+      width: 32px;
+      height: 32px;
+      border-radius: 7px;
+      background: #fff;
+      object-fit: contain;
+    }
+
     footer {
       background: #293462;
       color: #fff;
@@ -288,23 +341,30 @@
       .section-title { font-size: 1.4rem; }
       header h1 { font-size: 2rem; }
       .powered-by { right: 0.7rem; top: 0.7rem; font-size: 0.96rem; }
+      .landing-section { padding: 1.2rem 0.5rem; }
+      .landing-link-btn { font-size: 1.02rem; padding: 0.7rem 1rem; }
+      .landing-links { gap: 0.8rem; }
     }
   </style>
   <script>
     // SPA navigation (shows/hides tab content)
     function showSection(category) {
-      document.querySelectorAll('.resource-grid,.discussion-section').forEach(el => el.style.display = 'none');
+      document.querySelectorAll('.resource-grid,.discussion-section,.landing-section').forEach(el => el.style.display = 'none');
       if (category === 'community') {
         document.getElementById('category-community').style.display = 'block';
+      } else if (category === 'landing') {
+        document.getElementById('landing-section').style.display = 'block';
       } else {
         document.getElementById('category-' + category).style.display = 'grid';
       }
       document.querySelectorAll('.nav-btn').forEach(btn => btn.classList.remove('active'));
-      document.getElementById('nav-' + category).classList.add('active');
+      if(category !== 'landing'){
+        document.getElementById('nav-' + category).classList.add('active');
+      }
     }
     window.addEventListener('DOMContentLoaded', function() {
-      // Show Smart Hacks section and highlight tab on load
-      showSection('hacks');
+      // Show landing section and highlight nothing on load
+      showSection('landing');
     });
 
     // Simple local discussion storage (for demo)
@@ -360,6 +420,7 @@
       JPEGs, PDFs, SOPs, cheatsheets & more — all in one modern hub.
     </p>
     <nav>
+      <button class="nav-btn" id="nav-landing" onclick="showSection('landing')">Home</button>
       <button class="nav-btn" id="nav-windows" onclick="showSection('windows')">Windows</button>
       <button class="nav-btn" id="nav-vmware" onclick="showSection('vmware')">VMware</button>
       <button class="nav-btn" id="nav-cloud" onclick="showSection('cloud')">Cloud</button>
@@ -369,51 +430,62 @@
   </header>
 
   <main>
-    <!-- Smart Hacks Section (Landing/Default visible section) -->
-    <div class="resource-grid" id="category-hacks">
+    <!-- Landing Section -->
+    <section class="landing-section" id="landing-section">
+      <h2>Welcome to dKloud.in Tech Knowledge Base</h2>
+      <p>
+        <b>dKloud.in</b> is your modern, open, and ever-growing hub for curated IT resources, solutions, and smart hacks.<br>
+        Whether you're an IT professional, student, or tech enthusiast, you'll find practical guides, SOPs, cheatsheets, automation scripts, and a vibrant community.<br><br>
+        <b>Why dKloud.in?</b><br>
+        <ul style="max-width:600px;text-align:left;display:inline-block;margin:0 auto 1.2em auto;font-size:1.09em;">
+          <li>🚀 <b>Smart Hacks:</b> Expert automation, scripts, and workflow tips for real-world productivity.</li>
+          <li>💻 <b>Windows & VMware:</b> Guides, SOPs, and cheatsheets for sysadmins and cloud engineers.</li>
+          <li>☁️ <b>Cloud:</b> Architectures, CLI commands, and best practices for AWS, Azure, GCP & beyond.</li>
+          <li>🤝 <b>Community:</b> Share knowledge, ask questions, and grow your IT network.</li>
+          <li>📝 <b>Easy Updates:</b> All content managed via Notion for instant, live access – no login required!</li>
+        </ul>
+        <b>Start exploring by clicking a resource below:</b>
+      </p>
+      <div class="landing-links">
+        <a href="https://smarthacks.thesimple.ink/" class="landing-link-btn" target="_blank">
+          <img src="https://img.icons8.com/ios-filled/50/293462/idea.png" alt="Smart Hacks">Smart Hacks
+        </a>
+        <a href="https://windows.thesimple.ink/" class="landing-link-btn" target="_blank">
+          <img src="https://img.icons8.com/ios-filled/50/293462/windows8.png" alt="Windows">Windows
+        </a>
+        <a href="https://cloud.thesimple.ink/" class="landing-link-btn" target="_blank">
+          <img src="https://img.icons8.com/ios-filled/50/293462/cloud.png" alt="Cloud">Cloud
+        </a>
+        <a href="#nav-community" class="landing-link-btn" onclick="showSection('community');return false;">
+          <img src="https://img.icons8.com/ios-filled/50/293462/conference-call.png" alt="Community">Community
+        </a>
+      </div>
+    </section>
+    <!-- Smart Hacks Section -->
+    <div class="resource-grid" id="category-hacks" style="display:none">
       <div style="width:100%;max-width:900px;margin:auto;grid-column: 1/-1;">
-        <iframe
-          src="https://whimsical-catcher-c6e.notion.site/Smart-hacks-2372373e73df80cabac7f93a45171596"
-          style="width:100%;min-height:70vh;border:0;border-radius:12px;box-shadow:0 4px 20px rgba(41,52,98,0.10);background:#fff;"
-          allowfullscreen
-          loading="lazy"
-          referrerpolicy="no-referrer-when-downgrade"
-        ></iframe>
-        <div style="text-align:center;margin-top:1em;">
-          <a href="https://whimsical-catcher-c6e.notion.site/Smart-hacks-2372373e73df80cabac7f93a45171596" target="_blank" rel="noopener" style="color:#293462;text-decoration:underline;font-weight:bold;">
-            📖 View Smart Hacks in Notion (best on mobile)
+        <div style="text-align:center;margin:3em 0;">
+          <a href="https://smarthacks.thesimple.ink/"
+             target="_blank"
+             style="font-size:1.3em;padding:1em 2em;border-radius:10px;background:#f24c4c;color:#fff;font-weight:bold;text-decoration:none;box-shadow:0 2px 8px rgba(41,52,98,0.10);">
+            🚀 View the Smart Hacks Knowledge Base
           </a>
         </div>
       </div>
     </div>
     <!-- Windows Section -->
     <div class="resource-grid" id="category-windows" style="display:none">
-      <div class="resource-card">
-        <img src="https://img.icons8.com/ios-filled/50/293462/windows8.png" class="icon" alt="Windows">
-        <h3>Windows Server Basics (PDF)</h3>
-        <p>Step-by-step guide for Windows Server deployment & management.</p>
-        <div class="resource-links">
-          <a class="resource-link" href="docs/windows-server-basics.pdf" target="_blank">Download PDF</a>
-        </div>
-      </div>
-      <div class="resource-card">
-        <img src="https://img.icons8.com/material-rounded/48/293462/file.png" class="icon" alt="Cheatsheet">
-        <h3>Windows Admin Cheatsheet (JPEG)</h3>
-        <p>Quick reference for Windows Server administration commands and tips.</p>
-        <div class="resource-links">
-          <a class="resource-link" href="docs/windows-cheatsheet.jpg" target="_blank">View JPEG</a>
-        </div>
-      </div>
-      <div class="resource-card">
-        <img src="https://img.icons8.com/ios-filled/50/293462/sop.png" class="icon" alt="SOP">
-        <h3>Windows SOPs</h3>
-        <p>Standard Operating Procedures for enterprise Windows environments.</p>
-        <div class="resource-links">
-          <a class="resource-link" href="docs/windows-sop.pdf" target="_blank">SOP PDF</a>
+      <div style="width:100%;max-width:900px;margin:auto;grid-column: 1/-1;">
+        <div style="text-align:center;margin:3em 0;">
+          <a href="https://windows.thesimple.ink/"
+             target="_blank"
+             style="font-size:1.3em;padding:1em 2em;border-radius:10px;background:#293462;color:#fff;font-weight:bold;text-decoration:none;box-shadow:0 2px 8px rgba(41,52,98,0.10);">
+            💻 Go to Windows Resource Hub
+          </a>
         </div>
       </div>
     </div>
-    <!-- VMware Section -->
+    <!-- VMware Section (kept as before) -->
     <div class="resource-grid" id="category-vmware" style="display:none">
       <div class="resource-card">
         <img src="https://img.icons8.com/ios/50/293462/virtual-machine.png" class="icon" alt="VMware">
@@ -442,28 +514,13 @@
     </div>
     <!-- Cloud Section -->
     <div class="resource-grid" id="category-cloud" style="display:none">
-      <div class="resource-card">
-        <img src="https://img.icons8.com/ios-filled/50/293462/cloud.png" class="icon" alt="Cloud">
-        <h3>Cloud Architecture Explained</h3>
-        <p>Overview of cloud computing models, architecture, and best practices.</p>
-        <div class="resource-links">
-          <a class="resource-link" href="docs/cloud-architecture.html" target="_blank">Read Article</a>
-        </div>
-      </div>
-      <div class="resource-card">
-        <img src="https://img.icons8.com/material-rounded/48/293462/cloud-backup-restore.png" class="icon" alt="Cheatsheet">
-        <h3>Cloud CLI Cheatsheet</h3>
-        <p>Quick commands for AWS, Azure, and GCP cloud operations.</p>
-        <div class="resource-links">
-          <a class="resource-link" href="docs/cloud-cli-cheatsheet.jpg" target="_blank">View JPEG</a>
-        </div>
-      </div>
-      <div class="resource-card">
-        <img src="https://img.icons8.com/ios-filled/50/293462/book.png" class="icon" alt="SOP">
-        <h3>Cloud SOPs</h3>
-        <p>Essential SOPs for cloud migration, security, and automation.</p>
-        <div class="resource-links">
-          <a class="resource-link" href="docs/cloud-sop.pdf" target="_blank">SOP PDF</a>
+      <div style="width:100%;max-width:900px;margin:auto;grid-column: 1/-1;">
+        <div style="text-align:center;margin:3em 0;">
+          <a href="https://cloud.thesimple.ink/"
+             target="_blank"
+             style="font-size:1.3em;padding:1em 2em;border-radius:10px;background:#0b6bbf;color:#fff;font-weight:bold;text-decoration:none;box-shadow:0 2px 8px rgba(41,52,98,0.10);">
+            ☁️ Go to Cloud Resource Hub
+          </a>
         </div>
       </div>
     </div>
