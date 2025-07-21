@@ -3,178 +3,516 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>dKloud.in - Tech Knowledge Hub</title>
-  https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;700&display=swap
+  <title>dKloud.in Tech Knowledge Base</title>
+  <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;700&display=swap" rel="stylesheet">
 
   <style>
+    :root {
+      --primary: #293462;
+      --accent: #f24c4c;
+      --bg: #f9faff;
+      --card-bg: #fff;
+      --muted: #a6b1e1;
+      --shadow: 0 4px 20px rgba(41,52,98,0.07);
+    }
     * {
       box-sizing: border-box;
     }
-
-    body {
+    html, body {
       margin: 0;
-      font-family: 'Ubuntu', sans-serif;
-      background-color: #f9f9f9;
-      color: #333;
-    }
-
-    header {
-      background: linear-gradient(135deg, #1a1a2e, #16213e);
-      color: white;
-      padding: 3rem 1rem;
-      text-align: center;
-    }
-
-    header h1 {
-      font-size: 2.8rem;
-      margin-bottom: 0.5rem;
-    }
-
-    header p {
-      font-size: 1.2rem;
-      color: #ccc;
-    }
-
-    .tabs {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 1.5rem;
-      padding: 2rem;
-      max-width: 1000px;
-      margin: auto;
-    }
-
-    .tab-card {
-      background: white;
-      border-radius: 12px;
-      padding: 1.5rem;
-      text-align: center;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-      transition: transform 0.3s ease;
-      text-decoration: none;
-      color: #1a1a2e;
-    }
-
-    .tab-card:hover {
-      transform: translateY(-5px);
-      background-color: #f0f0f0;
-    }
-
-    .tab-card h3 {
-      margin-top: 1rem;
-      font-size: 1.2rem;
-    }
-
-    section {
-      padding: 2rem 1rem;
-      max-width: 900px;
-      margin: auto;
-    }
-
-    h2 {
-      text-align: center;
-      margin-bottom: 1rem;
-      color: #1a1a2e;
-    }
-
-    .blog-list {
-      list-style: none;
       padding: 0;
+      font-family: 'Ubuntu', sans-serif;
+      background: var(--bg);
+      color: var(--primary);
     }
-
-    .blog-list li {
-      background: white;
-      margin: 0.5rem 0;
-      padding: 1rem;
-      border-radius: 8px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
-    }
-
-    .blog-list a {
-      text-decoration: none;
-      color: #0077b5;
-      font-weight: bold;
-    }
-
-    .contact-buttons {
+    header {
+      background: linear-gradient(120deg, #293462 60%, #1e2746 100%);
+      color: white;
+      padding: 3.5rem 1rem 2rem 1rem;
       text-align: center;
+      position: relative;
+      box-shadow: var(--shadow);
+    }
+    header h1 {
+      font-size: 2.7rem;
+      font-weight: 700;
+      margin: 0 0 0.5rem;
+      letter-spacing: 1px;
+    }
+    header p {
+      color: var(--muted);
+      font-size: 1.15rem;
+      margin: 0.3rem 0 0 0;
+    }
+    .powered-by {
+      position: absolute;
+      right: 1.5rem;
+      top: 1.2rem;
+      font-size: 1rem;
+      background: #f24c4c;
+      color: #fff;
+      border-radius: 12px;
+      padding: 0.25rem 1rem;
+      letter-spacing: 1px;
+      font-weight: bold;
+      box-shadow: 0 2px 6px rgba(242,76,76,0.10);
+      opacity: 0.93;
+    }
+    nav {
+      margin: 1.5rem auto 0;
+      display: flex;
+      gap: 1.5rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .nav-btn {
+      background: var(--card-bg);
+      color: var(--primary);
+      border: none;
+      padding: 1rem 2.5rem;
+      border-radius: 11px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      box-shadow: var(--shadow);
+      transition: background 0.2s, color 0.2s, transform 0.2s;
+      cursor: pointer;
+      margin: 0.2rem;
+      outline: none;
+    }
+    .nav-btn.active, .nav-btn:hover {
+      background: var(--accent);
+      color: #fff;
+      transform: translateY(-2px) scale(1.03);
+    }
+
+    main {
+      max-width: 1050px;
+      margin: 2.5rem auto 0 auto;
+      padding: 0 1rem 2rem 1rem;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      color: var(--primary);
+      letter-spacing: 0.5px;
+      font-weight: 700;
+    }
+
+    .resource-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+      gap: 1.8rem;
+      margin-bottom: 2rem;
+    }
+    .resource-card {
+      background: var(--card-bg);
+      border-radius: 16px;
+      padding: 1.7rem 1.3rem 1.3rem 1.3rem;
+      box-shadow: var(--shadow);
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      transition: box-shadow 0.2s, transform 0.2s;
+      position: relative;
+      min-height: 180px;
+    }
+    .resource-card:hover {
+      box-shadow: 0 8px 30px rgba(41,52,98,0.16);
+      transform: translateY(-3px) scale(1.02);
+    }
+    .resource-card img.icon {
+      width: 44px;
+      height: 44px;
+      margin-bottom: 0.5rem;
+      border-radius: 8px;
+      background: #f5f5ff;
+      object-fit: contain;
+    }
+    .resource-card h3 {
+      margin: 0.2rem 0 0.7rem 0;
+      font-size: 1.2rem;
+      font-weight: 700;
+      letter-spacing: 0.3px;
+      color: var(--primary);
+    }
+    .resource-card p {
+      color: #444;
+      font-size: 1rem;
+      margin: 0 0 1rem 0;
+      flex: 1;
+    }
+    .resource-links {
+      margin-top: auto;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+    }
+    .resource-link {
+      background: var(--accent);
+      color: #fff;
+      text-decoration: none;
+      padding: 0.5rem 1.1rem;
+      border-radius: 7px;
+      font-weight: 600;
+      font-size: 0.98rem;
+      transition: background 0.2s;
+      display: inline-block;
+    }
+    .resource-link:hover {
+      background: #293462;
+      color: #fff;
+    }
+
+    /* Community/Discussion Section */
+    .discussion-section {
+      background: #fff;
+      border-radius: 14px;
+      box-shadow: var(--shadow);
+      padding: 2rem 1.2rem;
+      margin: 1.5rem 0 0 0;
+      text-align: center;
+    }
+    .discussion-form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+      max-width: 420px;
+      margin: 1.5rem auto 0;
+    }
+    .discussion-form input, .discussion-form textarea {
+      width: 100%;
+      padding: 0.7rem 1rem;
+      border-radius: 7px;
+      border: 1px solid #e2e6ee;
+      font-size: 1rem;
+    }
+    .discussion-form textarea {
+      min-height: 90px;
+      resize: vertical;
+    }
+    .discussion-form button {
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      padding: 0.7rem 2rem;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .discussion-form button:hover {
+      background: #293462;
+    }
+    .discussion-list {
+      margin: 2rem auto 0;
+      max-width: 520px;
+      text-align: left;
+      padding: 0;
+      list-style: none;
+    }
+    .discussion-list li {
+      background: #f5f5ff;
+      border-radius: 9px;
+      margin-bottom: 1rem;
+      padding: 1rem 1.2rem;
+      box-shadow: 0 2px 8px rgba(41,52,98,0.06);
+    }
+    .discussion-list .user {
+      font-weight: bold;
+      color: var(--primary);
+      margin-bottom: 0.3rem;
+    }
+    .discussion-list .message {
+      margin-bottom: 0.2rem;
+      color: #444;
+    }
+    .discussion-list .timestamp {
+      font-size: 0.88rem;
+      color: #7e8aaf;
+      text-align: right;
+    }
+
+    /* Contact Section */
+    .contact-section {
+      background: #fff;
+      border-radius: 14px;
+      box-shadow: var(--shadow);
+      padding: 2rem 1.2rem;
+      margin: 1.5rem 0 0 0;
+      text-align: center;
+    }
+    .contact-btns {
+      display: flex;
+      justify-content: center;
+      gap: 1.2rem;
+      flex-wrap: wrap;
       margin-top: 1rem;
     }
-
-    .contact-buttons a {
-      display: inline-block;
-      margin: 0.5rem;
-      padding: 0.8rem 1.5rem;
+    .contact-btn {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--accent);
+      color: #fff;
+      padding: 0.7rem 1.4rem;
       border-radius: 8px;
+      font-weight: 600;
       text-decoration: none;
-      color: white;
-      font-weight: bold;
+      font-size: 1.02rem;
+      transition: background 0.2s;
     }
-
-    .whatsapp { background-color: #25D366; }
-    .linkedin { background-color: #0077b5; }
-    .email { background-color: #1976d2; }
+    .contact-btn:hover {
+      background: #293462;
+    }
+    .contact-btn img {
+      width: 22px;
+      height: 22px;
+      vertical-align: middle;
+    }
 
     footer {
-      background-color: #1a1a2e;
-      color: white;
+      background: #293462;
+      color: #fff;
       text-align: center;
-      padding: 1rem;
-      margin-top: 2rem;
+      font-size: 1rem;
+      padding: 1.3rem 0 1rem;
+      margin-top: 2.5rem;
+      letter-spacing: 0.5px;
+    }
+    @media (max-width: 600px) {
+      .resource-card { min-height: 150px; }
+      .section-title { font-size: 1.4rem; }
+      header h1 { font-size: 2rem; }
+      .powered-by { right: 0.7rem; top: 0.7rem; font-size: 0.96rem; }
     }
   </style>
+  <script>
+    // SPA navigation (shows/hides tab content)
+    function showSection(category) {
+      document.querySelectorAll('.resource-grid,.discussion-section').forEach(el => el.style.display = 'none');
+      if (category === 'community') {
+        document.getElementById('category-community').style.display = 'block';
+      } else {
+        document.getElementById('category-' + category).style.display = 'grid';
+      }
+      document.querySelectorAll('.nav-btn').forEach(btn => btn.classList.remove('active'));
+      document.getElementById('nav-' + category).classList.add('active');
+    }
+    window.addEventListener('DOMContentLoaded', function() {
+      // Show Smart Hacks section and highlight tab on load
+      showSection('hacks');
+    });
+
+    // Simple local discussion storage (for demo)
+    function getDiscussions() {
+      return JSON.parse(localStorage.getItem('dk_discussions') || '[]');
+    }
+    function saveDiscussions(discussions) {
+      localStorage.setItem('dk_discussions', JSON.stringify(discussions));
+    }
+    function addDiscussion(user, message) {
+      const discussions = getDiscussions();
+      discussions.unshift({
+        user,
+        message,
+        timestamp: new Date().toLocaleString()
+      });
+      saveDiscussions(discussions);
+      renderDiscussions();
+    }
+    function renderDiscussions() {
+      const ul = document.getElementById('discussion-list');
+      if (!ul) return;
+      const discussions = getDiscussions();
+      ul.innerHTML = '';
+      discussions.slice(0, 20).forEach(d => {
+        const li = document.createElement('li');
+        li.innerHTML = `<div class="user">${d.user}</div>
+          <div class="message">${d.message}</div>
+          <div class="timestamp">${d.timestamp}</div>`;
+        ul.appendChild(li);
+      });
+    }
+    function handleDiscussionForm(e) {
+      e.preventDefault();
+      const user = document.getElementById('discussion-user').value.trim() || "Anonymous";
+      const message = document.getElementById('discussion-message').value.trim();
+      if (!message) return;
+      addDiscussion(user, message);
+      document.getElementById('discussion-message').value = '';
+    }
+    window.addEventListener('DOMContentLoaded', function() {
+      renderDiscussions();
+      document.getElementById('discussion-form').onsubmit = handleDiscussionForm;
+    });
+  </script>
 </head>
 <body>
-
   <header>
-    <h1>dKloud.in</h1>
-    <p>Your Tech Knowledge Hub for KT, Cloud, and Learning</p>
+    <span class="powered-by">Powered by dKloud.in</span>
+    <h1>Tech Knowledge Base</h1>
+    <p>
+      Share, search, and discover <b>Windows</b>, <b>VMware</b>, <b>Cloud Computing</b>, and <b>Smart Hacks</b>.<br>
+      JPEGs, PDFs, SOPs, cheatsheets & more — all in one modern hub.
+    </p>
+    <nav>
+      <button class="nav-btn" id="nav-windows" onclick="showSection('windows')">Windows</button>
+      <button class="nav-btn" id="nav-vmware" onclick="showSection('vmware')">VMware</button>
+      <button class="nav-btn" id="nav-cloud" onclick="showSection('cloud')">Cloud</button>
+      <button class="nav-btn" id="nav-hacks" onclick="showSection('hacks')">Smart Hacks</button>
+      <button class="nav-btn" id="nav-community" onclick="showSection('community')">Community</button>
+    </nav>
   </header>
 
-  <div class="tabs">
-    <a href="windows-server.html" class="tab-card">
-      <img src="https://img.icons8.com/ios-filled/50/000000/windows8.png" alt="Windows Server    </a>
-    <a href="vmware.html" class="tab-card">
-      <img src="https://img.icons8.com/ios/000000/virtual-machine.png
-      <h3>VMware</h3>
-    </a>
-    <a href="cloud.html" class="tab-card">
-      <imgs://img.icons8.com/ios-filled/50/000000/cloud.png
-      <h3>Cloud</h3>
-    </a>
-    <a href="smart-hacks.html" class="tab-card">
-      <img src="https://img.icons8.com/ios-filled/50/000000/idea.png" alt="Smart Hacks    </a>
-  </div>
-
-  <section id="about">
-    <h2>🌐 About This Site</h2>
-    <p>
-      <strong>dKloud.in</strong> is a personal tech space for sharing knowledge, tutorials, and documents related to enterprise IT, cloud computing, and smart automation.
-      <br><br>
-      This site is designed for professionals, learners, and colleagues to access KT documents, blogs, and curated resources.
-    </p>
-  </section>
-
-  <section id="blogs">
-    <h2>📚 Latest Blogs & KT Docs</h2>
-    <ul class="blog-list">
-      <li><a href="docs/windows-server-basics.pdf" target="_blank">🖥 Windows Server Basics – PDF</a></li>
-      <li><a href="docs/vmware-networking-guide.pdf" target="_blank">🧱 VMware Networking Guide</a></li>
-      <li><a href="docs/cloud-architecture.html" target="_blank">☁️ Cloud Architecture Explained</a></li>
-      <li><a href="docs/smart-hacks-automation.html" target="_blank">🧠 Smart Hacks for Automation</a></li>
-    </ul>
-  </section>
-
-  <section id="contact">
-    <h2>📬 Contact</h2>
-    <div class="contact-buttons">
-      <a href="https://wa.me/918175996960 href="https://www.linkedin.com/in/dileep-yadav-      <a href="mailto:dileepkryadav09@gmail.com" class="email">Email</a>
+  <main>
+    <!-- Smart Hacks Section (Landing/Default visible section) -->
+    <div class="resource-grid" id="category-hacks">
+      <div class="resource-card">
+        <img src="https://img.icons8.com/ios-filled/50/293462/idea.png" class="icon" alt="Smart Hacks">
+        <h3>Smart Hacks for Automation</h3>
+        <p>Boost productivity with automation scripts and workflow tips.</p>
+        <div class="resource-links">
+          <a class="resource-link" href="docs/smart-hacks-automation.html" target="_blank">Read Article</a>
+        </div>
+      </div>
+      <div class="resource-card">
+        <img src="https://img.icons8.com/ios-filled/50/293462/brainstorm-skill.png" class="icon" alt="Cheatsheet">
+        <h3>PowerShell & Bash Cheatsheet</h3>
+        <p>Popular automation commands for Windows and Linux scripting.</p>
+        <div class="resource-links">
+          <a class="resource-link" href="docs/powershell-bash-cheatsheet.jpg" target="_blank">View JPEG</a>
+        </div>
+      </div>
+      <div class="resource-card">
+        <img src="https://img.icons8.com/ios-filled/50/293462/checked-checkbox.png" class="icon" alt="SOP">
+        <h3>Smart Hack SOPs</h3>
+        <p>Best practices and SOPs for building smart automation and integrations.</p>
+        <div class="resource-links">
+          <a class="resource-link" href="docs/smart-hacks-sop.pdf" target="_blank">SOP PDF</a>
+        </div>
+      </div>
     </div>
-  </section>
-
+    <!-- Windows Section -->
+    <div class="resource-grid" id="category-windows" style="display:none">
+      <div class="resource-card">
+        <img src="https://img.icons8.com/ios-filled/50/293462/windows8.png" class="icon" alt="Windows">
+        <h3>Windows Server Basics (PDF)</h3>
+        <p>Step-by-step guide for Windows Server deployment & management.</p>
+        <div class="resource-links">
+          <a class="resource-link" href="docs/windows-server-basics.pdf" target="_blank">Download PDF</a>
+        </div>
+      </div>
+      <div class="resource-card">
+        <img src="https://img.icons8.com/material-rounded/48/293462/file.png" class="icon" alt="Cheatsheet">
+        <h3>Windows Admin Cheatsheet (JPEG)</h3>
+        <p>Quick reference for Windows Server administration commands and tips.</p>
+        <div class="resource-links">
+          <a class="resource-link" href="docs/windows-cheatsheet.jpg" target="_blank">View JPEG</a>
+        </div>
+      </div>
+      <div class="resource-card">
+        <img src="https://img.icons8.com/ios-filled/50/293462/sop.png" class="icon" alt="SOP">
+        <h3>Windows SOPs</h3>
+        <p>Standard Operating Procedures for enterprise Windows environments.</p>
+        <div class="resource-links">
+          <a class="resource-link" href="docs/windows-sop.pdf" target="_blank">SOP PDF</a>
+        </div>
+      </div>
+    </div>
+    <!-- VMware Section -->
+    <div class="resource-grid" id="category-vmware" style="display:none">
+      <div class="resource-card">
+        <img src="https://img.icons8.com/ios/50/293462/virtual-machine.png" class="icon" alt="VMware">
+        <h3>VMware Networking Guide</h3>
+        <p>Essential networking knowledge for vSphere, ESXi, and vCenter admins.</p>
+        <div class="resource-links">
+          <a class="resource-link" href="docs/vmware-networking-guide.pdf" target="_blank">Download PDF</a>
+        </div>
+      </div>
+      <div class="resource-card">
+        <img src="https://img.icons8.com/color/48/293462/vmware-workstation-player.png" class="icon" alt="Cheatsheet">
+        <h3>VMware Cheatsheet</h3>
+        <p>Handy one-pager covering VM lifecycle, migration, and troubleshooting.</p>
+        <div class="resource-links">
+          <a class="resource-link" href="docs/vmware-cheatsheet.jpg" target="_blank">View JPEG</a>
+        </div>
+      </div>
+      <div class="resource-card">
+        <img src="https://img.icons8.com/ios-filled/50/293462/manual.png" class="icon" alt="SOP">
+        <h3>VMware SOPs</h3>
+        <p>Operational procedures for VMware environments and automation.</p>
+        <div class="resource-links">
+          <a class="resource-link" href="docs/vmware-sop.pdf" target="_blank">SOP PDF</a>
+        </div>
+      </div>
+    </div>
+    <!-- Cloud Section -->
+    <div class="resource-grid" id="category-cloud" style="display:none">
+      <div class="resource-card">
+        <img src="https://img.icons8.com/ios-filled/50/293462/cloud.png" class="icon" alt="Cloud">
+        <h3>Cloud Architecture Explained</h3>
+        <p>Overview of cloud computing models, architecture, and best practices.</p>
+        <div class="resource-links">
+          <a class="resource-link" href="docs/cloud-architecture.html" target="_blank">Read Article</a>
+        </div>
+      </div>
+      <div class="resource-card">
+        <img src="https://img.icons8.com/material-rounded/48/293462/cloud-backup-restore.png" class="icon" alt="Cheatsheet">
+        <h3>Cloud CLI Cheatsheet</h3>
+        <p>Quick commands for AWS, Azure, and GCP cloud operations.</p>
+        <div class="resource-links">
+          <a class="resource-link" href="docs/cloud-cli-cheatsheet.jpg" target="_blank">View JPEG</a>
+        </div>
+      </div>
+      <div class="resource-card">
+        <img src="https://img.icons8.com/ios-filled/50/293462/book.png" class="icon" alt="SOP">
+        <h3>Cloud SOPs</h3>
+        <p>Essential SOPs for cloud migration, security, and automation.</p>
+        <div class="resource-links">
+          <a class="resource-link" href="docs/cloud-sop.pdf" target="_blank">SOP PDF</a>
+        </div>
+      </div>
+    </div>
+    <!-- Community Section -->
+    <section class="discussion-section" id="category-community" style="display:none">
+      <div class="section-title">💬 Community Discussion Board</div>
+      <p>
+        Open discussion for everyone! Share ideas, questions, and connect with tech peers.<br>
+        <b>No login required.</b> Please be respectful and professional.
+      </p>
+      <form id="discussion-form" class="discussion-form" autocomplete="off">
+        <input id="discussion-user" type="text" maxlength="30" placeholder="Your Name (optional)">
+        <textarea id="discussion-message" maxlength="300" placeholder="Type your discussion message..." required></textarea>
+        <button type="submit">Post Message</button>
+      </form>
+      <ul class="discussion-list" id="discussion-list"></ul>
+    </section>
+    <!-- Contact Section -->
+    <section class="contact-section" id="contact">
+      <div class="section-title">📬 Contact & Share</div>
+      <p>
+        Have a resource, want to collaborate, or need a document? <br>
+        Reach out directly or follow for more updates!
+      </p>
+      <div class="contact-btns">
+        <a href="https://wa.me/918175996960" class="contact-btn" target="_blank">
+          <img src="https://img.icons8.com/color/48/000000/whatsapp--v1.png" alt="WhatsApp"/> WhatsApp
+        </a>
+        <a href="https://www.linkedin.com/in/dileep-yadav-63500158/" class="contact-btn" target="_blank">
+          <img src="https://img.icons8.com/color/48/000000/linkedin.png" alt="LinkedIn"/> LinkedIn
+        </a>
+        <a href="mailto:dileepkryadav09@gmail.com" class="contact-btn" target="_blank">
+          <img src="https://img.icons8.com/color/48/000000/gmail.png" alt="Email"/> Email
+        </a>
+      </div>
+    </section>
+  </main>
   <footer>
-    &copy; 2025 dKloud.in — Built for Learning & Sharing
+    &copy; 2025 dKloud.in — Modern Tech Knowledge Base. Built for Sharing & Learning.
   </footer>
-
 </body>
 </html>
