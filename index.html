@@ -4,58 +4,65 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>dKloud.in - Tech Knowledge Hub</title>
+  https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;700&display=swap
 
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500&
   <style>
+    * {
+      box-sizing: border-box;
+    }
+
     body {
-      font-family: 'Ubuntu', sans-serif;
-      background-color: #f4f4f4;
       margin: 0;
-      padding: 0;
-     -align: center;
+      font-family: 'Ubuntu', sans-serif;
+      background-color: #f9f9f9;
+      color: #333;
     }
 
     header {
-      background-color: #1a1a2e;
+      background: linear-gradient(135deg, #1a1a2e, #16213e);
       color: white;
-      padding: 2rem 1rem;
+      padding: 3rem 1rem;
+      text-align: center;
     }
 
-    h1 {
+    header h1 {
       font-size: 2.8rem;
       margin-bottom: 0.5rem;
     }
 
-    p.subtitle {
+    header p {
       font-size: 1.2rem;
       color: #ccc;
     }
 
     .tabs {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 1rem;
-      margin: 2rem auto;
-      max-width: 900px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem;
+      padding: 2rem;
+      max-width: 1000px;
+      margin: auto;
     }
 
-    .tab {
+    .tab-card {
+      background: white;
+      border-radius: 12px;
+      padding: 1.5rem;
+      text-align: center;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease;
       text-decoration: none;
       color: #1a1a2e;
-      font-weight: bold;
-      padding: 1.5rem;
-      border: 3px solid #1a1a2e;
-      border-radius: 12px;
-      background-color: white;
-      width: 180px;
-      transition: all 0.3s ease;
     }
 
-    .tab:hover {
-      background-color: #1a1a2e;
-      color: white;
+    .tab-card:hover {
+      transform: translateY(-5px);
+      background-color: #f0f0f0;
+    }
+
+    .tab-card h3 {
+      margin-top: 1rem;
+      font-size: 1.2rem;
     }
 
     section {
@@ -65,17 +72,33 @@
     }
 
     h2 {
-      color: #1a1a2e;
+      text-align: center;
       margin-bottom: 1rem;
+      color: #1a1a2e;
     }
 
     .blog-list {
-      text-align: left;
-      padding-left: 1rem;
+      list-style: none;
+      padding: 0;
     }
 
     .blog-list li {
+      background: white;
       margin: 0.5rem 0;
+      padding: 1rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    }
+
+    .blog-list a {
+      text-decoration: none;
+      color: #0077b5;
+      font-weight: bold;
+    }
+
+    .contact-buttons {
+      text-align: center;
+      margin-top: 1rem;
     }
 
     .contact-buttons a {
@@ -95,14 +118,9 @@
     footer {
       background-color: #1a1a2e;
       color: white;
+      text-align: center;
       padding: 1rem;
       margin-top: 2rem;
-    }
-
-    @media (max-width: 768px) {
-      .tab {
-        width: 90%;
-      }
     }
   </style>
 </head>
@@ -110,20 +128,28 @@
 
   <header>
     <h1>dKloud.in</h1>
-    <p class="subtitle">Your Tech Knowledge Hub for KT, Cloud, and Learning</p>
+    <p>Your Tech Knowledge Hub for KT, Cloud, and Learning</p>
   </header>
 
   <div class="tabs">
-    <a href="windows-server.html" class="tab">🖥 Windows Server</a>
-    <a href="vmware.html" class="tab">🧱 VMware</a>
-    <a href="cloud.html" class="tab">☁️ Cloud</a>
-    <a href="smart-hacks.html" class="tab">🧠 Smart Hacks</a>
+    <a href="windows-server.html" class="tab-card">
+      <img src="https://img.icons8.com/ios-filled/50/000000/windows8.png" alt="Windows Server    </a>
+    <a href="vmware.html" class="tab-card">
+      <img src="https://img.icons8.com/ios/000000/virtual-machine.png
+      <h3>VMware</h3>
+    </a>
+    <a href="cloud.html" class="tab-card">
+      <imgs://img.icons8.com/ios-filled/50/000000/cloud.png
+      <h3>Cloud</h3>
+    </a>
+    <a href="smart-hacks.html" class="tab-card">
+      <img src="https://img.icons8.com/ios-filled/50/000000/idea.png" alt="Smart Hacks    </a>
   </div>
 
   <section id="about">
-    <h2>About This Site</h2>
+    <h2>🌐 About This Site</h2>
     <p>
-      Welcome to <strong>dKloud.in</strong> — a personal tech space for sharing knowledge, tutorials, and documents related to enterprise IT, cloud computing, and smart automation.
+      <strong>dKloud.in</strong> is a personal tech space for sharing knowledge, tutorials, and documents related to enterprise IT, cloud computing, and smart automation.
       <br><br>
       This site is designed for professionals, learners, and colleagues to access KT documents, blogs, and curated resources.
     </p>
@@ -132,17 +158,17 @@
   <section id="blogs">
     <h2>📚 Latest Blogs & KT Docs</h2>
     <ul class="blog-list">
-      <li><a href="docs/windows-server-basics.pdf" target="_blank">Windows Server Basics – PDF</a></li>
-      <li><a href="docs/vmware-networking-guide.pdf" target="_blank">VMware Networking Guide</a></li>
-      <li><a href="docs/cloud-architecture.html" target="_blank">Cloud Architecture Explained</a></li>
-      <li><a href="docs/smart-hacks-automation.html" target="_blank">Smart Hacks for Automation</a></li>
+      <li><a href="docs/windows-server-basics.pdf" target="_blank">🖥 Windows Server Basics – PDF</a></li>
+      <li><a href="docs/vmware-networking-guide.pdf" target="_blank">🧱 VMware Networking Guide</a></li>
+      <li><a href="docs/cloud-architecture.html" target="_blank">☁️ Cloud Architecture Explained</a></li>
+      <li><a href="docs/smart-hacks-automation.html" target="_blank">🧠 Smart Hacks for Automation</a></li>
     </ul>
   </section>
 
   <section id="contact">
     <h2>📬 Contact</h2>
     <div class="contact-buttons">
-      <a href="https://wa.me/918175996960" class="whatsapp" target="_blankn/dileep-yadav-      <a href="mailto:dileepkryadav09@gmail.com" class="email">Email</a>
+      <a href="https://wa.me/918175996960 href="https://www.linkedin.com/in/dileep-yadav-      <a href="mailto:dileepkryadav09@gmail.com" class="email">Email</a>
     </div>
   </section>
 
