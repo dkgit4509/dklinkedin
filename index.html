@@ -3,153 +3,85 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>dKloud.in - Home</title>
+  <title>dKloud.in - Tech Knowledge Hub</title>
 
   <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Atomic+Age&family=Ubuntu:wght@400;500&display=swap" rel="stylesheet">
-
+  <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500&
   <style>
     body {
       font-family: 'Ubuntu', sans-serif;
-      background-color: #e6e6e6;
+      background-color: #f4f4f4;
       margin: 0;
       padding: 0;
-      text-align: center;
-    }
-
-    .banner {
-      background-color: #ffc400;
-      overflow: hidden;
-      white-space: nowrap;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      height: 2.2rem;
-      display: flex;
-      align-items: center;
-    }
-
-    .scroll-text {
-      display: inline-block;
-      padding-left: 100%;
-      animation: scroll-left 15s linear infinite;
-      font-weight: bold;
-      font-size: 1rem;
-      color: black;
-    }
-
-    @keyframes scroll-left {
-      0%   { transform: translateX(0); }
-      100% { transform: translateX(-100%); }
+     -align: center;
     }
 
     header {
-      padding: 2rem 1rem;
       background-color: #1a1a2e;
       color: white;
+      padding: 2rem 1rem;
     }
 
     h1 {
-      margin: 1rem 0;
-      font-size: 3rem;
-      font-family: 'Atomic Age', cursive;
-      letter-spacing: 1px;
+      font-size: 2.8rem;
+      margin-bottom: 0.5rem;
     }
 
-    h2 {
-      font-size: 2rem;
-      margin-bottom: 1rem;
-      color: #1a1a2e;
-      font-family: 'Atomic Age', cursive;
+    p.subtitle {
+      font-size: 1.2rem;
+      color: #ccc;
     }
 
     .tabs {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
-      gap: 1.2rem;
-      margin: 2rem;
-      position: relative;
+      gap: 1rem;
+      margin: 2rem auto;
+      max-width: 900px;
     }
 
     .tab {
       text-decoration: none;
-      color: black;
+      color: #1a1a2e;
       font-weight: bold;
-      padding: 1rem;
-      border: 3px solid;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 120px;
-      height: 120px;
-      font-size: 0.95rem;
-      text-align: center;
+      padding: 1.5rem;
+      border: 3px solid #1a1a2e;
+      border-radius: 12px;
       background-color: white;
-      transition: transform 0.3s;
-      font-family: 'Ubuntu', cursive;
-      position: relative;
+      width: 180px;
+      transition: all 0.3s ease;
     }
 
     .tab:hover {
-      transform: scale(1.1);
+      background-color: #1a1a2e;
+      color: white;
     }
-
-    .dropdown {
-      display: none;
-      position: absolute;
-      bottom: 130px;
-      left: 50%;
-      transform: translateX(-50%);
-      background: white;
-      border-radius: 12px;
-      padding: 0.5rem 1rem;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-      z-index: 10;
-      flex-wrap: nowrap;
-      justify-content: center;
-      gap: 0.5rem;
-    }
-
-    .tab:hover .dropdown {
-      display: flex;
-      flex-direction: column;
-    }
-
-    .dropdown a {
-      text-decoration: none;
-      color: #1a1a2e;
-      font-weight: bold;
-      background: #f0f2f5;
-      padding: 0.5rem 1rem;
-      border-radius: 12px;
-      white-space: nowrap;
-    }
-
-    .yellow-outline { border-color: #fbc02d; }
-    .blue-outline   { border-color: #1976d2; }
-    .red-outline    { border-color: #e53935; }
-    .green-outline  { border-color: #43a047; }
-    .purple-outline { border-color: #8e24aa; }
-    .teal-outline   { border-color: #00796b; }
 
     section {
-      background-color: #e6e6e6;
       padding: 2rem 1rem;
+      max-width: 900px;
+      margin: auto;
     }
 
-    #about p, #contact p {
-      max-width: 700px;
-      margin: auto;
-      font-size: 1.1rem;
-      color: #222;
+    h2 {
+      color: #1a1a2e;
+      margin-bottom: 1rem;
+    }
+
+    .blog-list {
+      text-align: left;
+      padding-left: 1rem;
+    }
+
+    .blog-list li {
+      margin: 0.5rem 0;
     }
 
     .contact-buttons a {
-      padding: 1rem 2rem;
-      margin: 0.5rem;
       display: inline-block;
+      margin: 0.5rem;
+      padding: 0.8rem 1.5rem;
       border-radius: 8px;
       text-decoration: none;
       color: white;
@@ -157,101 +89,66 @@
     }
 
     .whatsapp { background-color: #25D366; }
-    .instagram { background-color: #E1306C; }
-    .email { background-color: #1976d2; }
     .linkedin { background-color: #0077b5; }
+    .email { background-color: #1976d2; }
+
+    footer {
+      background-color: #1a1a2e;
+      color: white;
+      padding: 1rem;
+      margin-top: 2rem;
+    }
 
     @media (max-width: 768px) {
-      .tabs {
-        flex-direction: column;
-        align-items: center;
-      }
       .tab {
-        width: 100px;
-        height: 100px;
-        font-size: 0.8rem;
-      }
-      .dropdown {
-        bottom: auto;
-        top: 110px;
-        flex-direction: column;
+        width: 90%;
       }
     }
   </style>
 </head>
 <body>
 
-  <div class="banner">
-    <div class="scroll-text">
-      🚧 👷‍♂️ dKloud.in is under creative construction. Please stand by... Do you know? Sitaare Zameen Par is a Hindi remake of the 2018 Spanish film, Campeones 🚧
-    </div>
-  </div>
-
   <header>
-    <h1>Welcome to dKloud.in</h1>
-    <p>Your destination for tech, creativity, and future thinking</p>
+    <h1>dKloud.in</h1>
+    <p class="subtitle">Your Tech Knowledge Hub for KT, Cloud, and Learning</p>
   </header>
 
   <div class="tabs">
-    <div class="tab yellow-outline">
-      MOVIES & TV 📺
-      <div class="dropdown">
-        <a href="movies.html">🎬 Movies</a>
-        <a href="tvseries.html">📺 TV Series</a>
-      </div>
-    </div>
-
-    <div class="tab red-outline">
-      YTube Channel Picks
-      <div class="dropdown">
-        <a href="#">💻 Tech</a>
-        <a href="#">🔬 Science & Space</a>
-        <a href="#">💰 Finance</a>
-        <a href="#">🗣 Communication</a>
-        <a href="#">🎓 Career & Learning</a>
-      </div>
-    </div>
-
-    <a href="tech.html" class="tab green-outline">TECH CORNER</a>
-    <a href="ai.html" class="tab purple-outline">AI</a>
-    <a href="blog.html" class="tab yellow-outline">BLOG</a>
-
-    <div class="tab yellow-outline">
-      MY PORTFOLIO
-      <div class="dropdown">
-        <a href="songs.html">🎵 My Songs</a>
-        <a href="poetry.html">📝 Poetries & Scripts</a>
-        <a href="#contact">📬 Contact</a>
-      </div>
-    </div>
+    <a href="windows-server.html" class="tab">🖥 Windows Server</a>
+    <a href="vmware.html" class="tab">🧱 VMware</a>
+    <a href="cloud.html" class="tab">☁️ Cloud</a>
+    <a href="smart-hacks.html" class="tab">🧠 Smart Hacks</a>
   </div>
 
   <section id="about">
-    <h2>🌐 About Us</h2>
+    <h2>About This Site</h2>
     <p>
-      <strong>dKloud.in</strong> is more than just a website—it's a digital tech space built to inform, inspire, and empower.<br><br>
-      We're on a mission to blend creativity, cloud technology, AI, and community-driven learning into one cohesive platform. Whether you're a tech enthusiast, a creative mind, or a curious learner, you'll find something meaningful here.
+      Welcome to <strong>dKloud.in</strong> — a personal tech space for sharing knowledge, tutorials, and documents related to enterprise IT, cloud computing, and smart automation.
       <br><br>
-      🚀 <strong>What you’ll find:</strong><br>
-      • Curated movies & TV picks<br>
-      • Personal creations in music, poetry, and storytelling<br>
-      • Blogs and tutorials on cloud, AI, and modern tech<br>
-      • Thoughtful YouTube channel picks that expand your knowledge<br>
-      • Tools, tips, and experiences that connect tech with creativity
-      <br><br>
-      🎯 <strong>Next Goal:</strong> Launch a creative cloud-based learning & resource hub powered by AI & automation.
+      This site is designed for professionals, learners, and colleagues to access KT documents, blogs, and curated resources.
     </p>
   </section>
 
+  <section id="blogs">
+    <h2>📚 Latest Blogs & KT Docs</h2>
+    <ul class="blog-list">
+      <li><a href="docs/windows-server-basics.pdf" target="_blank">Windows Server Basics – PDF</a></li>
+      <li><a href="docs/vmware-networking-guide.pdf" target="_blank">VMware Networking Guide</a></li>
+      <li><a href="docs/cloud-architecture.html" target="_blank">Cloud Architecture Explained</a></li>
+      <li><a href="docs/smart-hacks-automation.html" target="_blank">Smart Hacks for Automation</a></li>
+    </ul>
+  </section>
+
   <section id="contact">
-    <h2>📬 Contact Us</h2>
+    <h2>📬 Contact</h2>
     <div class="contact-buttons">
-      <a href="https://wa.me/918175996960" class="whatsapp" target="_blank">WhatsApp</a>
-      <a href="https://instagram.com/batbotdk09" class="instagram" target="_blank">Instagram</a>
-      <a href="https://www.linkedin.com/in/dileep-yadav-63500158" class="linkedin" target="_blank">LinkedIn</a>
-      <a href="mailto:dileepkryadav09@gmail.com" class="email">Email</a>
+      <a href="https://wa.me/918175996960" class="whatsapp" target="_blankn/dileep-yadav-      <a href="mailto:dileepkryadav09@gmail.com" class="email">Email</a>
     </div>
   </section>
+
+  <footer>
+    &copy; 2025 dKloud.in — Built for Learning & Sharing
+  </footer>
 
 </body>
 </html>
